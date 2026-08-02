@@ -1,0 +1,46 @@
+HELP.md
+
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# STS / Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# Gradle
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Spring Boot Secrets
+src/main/resources/application.properties
