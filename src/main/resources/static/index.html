@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Theatre Directory</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-film"></i>
+
+                <span>Theatre Directory</span>
+
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="#hero">Home</a></li>
+
+                <li><a href="#theatres">Theatres</a></li>
+
+                <li><a href="#movies">Movies</a></li>
+
+                <li><a href="#analytics">Analytics</a></li>
+
+                <li><a href="#about">About</a></li>
+
+            </ul>
+
+<div class="nav-buttons">
+
+    <button
+        id="loginBtn"
+        class="btn-secondary"
+    >
+
+        Login
+
+    </button>
+
+    <button
+        id="signupBtn"
+        class="btn-primary"
+    >
+
+        Sign Up
+
+    </button>
+
+    <button
+        id="dashboardBtn"
+        class="btn-primary"
+        style="display:none;"
+    >
+
+        Dashboard
+
+    </button>
+
+    <button
+        id="logoutBtn"
+        class="btn-secondary"
+        style="display:none;"
+    >
+
+        Logout
+
+    </button>
+
+</div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="hero">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <h1>
+
+                Discover the Best
+                <span>Movie Experience</span>
+
+            </h1>
+
+            <p>
+
+                Browse theatres, discover movies, explore analytics
+                and share your reviews with cinema lovers.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="btn-primary" id="exploreBtn">
+
+                    Explore Theatres
+
+                </button>
+
+                <button class="btn-secondary" id="analyticsBtn">
+
+                    View Analytics
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FEATURED THEATRES ================= -->
+
+    <section id="theatres" class="section">
+
+        <div class="section-header">
+
+            <h2>
+
+                <i class="fa-solid fa-building"></i>
+
+                Featured Theatres
+
+            </h2>
+
+            <p>
+
+                Browse theatres available in different cities.
+
+            </p>
+
+        </div>
+
+
+        <!-- Search + Filter -->
+
+        <div class="theatre-controls">
+
+            <input
+                type="text"
+                id="searchTheatre"
+                placeholder="Search Theatre..."
+            >
+
+            <input
+                type="number"
+                id="minScreens"
+                placeholder="Min Screens"
+            >
+
+            <input
+                type="number"
+                id="maxScreens"
+                placeholder="Max Screens"
+            >
+
+            <button
+                class="btn-primary"
+                id="filterBtn"
+            >
+
+                Filter
+
+            </button>
+
+        </div>
+
+
+        <!-- Theatre Cards -->
+
+        <div
+            id="theatreContainer"
+            class="card-container"
+        >
+
+            <!-- JavaScript will load theatres here -->
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= MOVIES ================= -->
+
+    <section
+        id="movies"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+
+                <i class="fa-solid fa-clapperboard"></i>
+
+                Movies
+
+            </h2>
+
+            <p>
+
+                Discover movies currently running in theatres.
+
+            </p>
+
+        </div>
+
+        <div
+            id="movieContainer"
+            class="card-container"
+        >
+
+            <!-- JS -->
+
+        </div>
+
+    </section>
+
+        <!-- ================= ANALYTICS ================= -->
+
+    <section
+        id="analytics"
+        class="section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Analytics Dashboard
+
+            </h2>
+
+            <p>
+
+                Explore insights generated from theatre reviews and movie data.
+
+            </p>
+
+        </div>
+
+        <div class="analytics-grid">
+
+            <div class="analytics-card">
+
+                <h3>Top Rated Theatres</h3>
+
+                <div id="topRatedTheatres">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+            <div class="analytics-card">
+
+                <h3>Most Reviewed Theatres</h3>
+
+                <div id="mostReviewedTheatres">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+            <div class="analytics-card">
+
+                <h3>Popular Movies</h3>
+
+                <div id="popularMovies">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+            <div class="analytics-card">
+
+                <h3>City Theatre Count</h3>
+
+                <canvas id="cityChart"></canvas>
+
+            </div>
+
+            <div class="analytics-card wide">
+
+                <h3>Rating Distribution</h3>
+
+                <canvas id="ratingChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section
+        id="about"
+        class="section about-section"
+    >
+
+        <div class="section-header">
+
+            <h2>
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                About
+
+            </h2>
+
+        </div>
+
+        <div class="about-content">
+
+            <p>
+
+                Theatre Directory is a movie theatre discovery platform built using
+                <strong>Spring Boot</strong>, <strong>HTML</strong>,
+                <strong>CSS</strong> and <strong>JavaScript</strong>.
+
+            </p>
+
+            <p>
+
+                Browse theatres, discover movies, explore analytics,
+                and share reviews to help others choose the perfect cinema experience.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 Theatre Directory
+
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= LOGIN MODAL ================= -->
+
+    <div
+        class="modal"
+        id="loginModal"
+    >
+
+        <div class="modal-content">
+
+            <span class="close" id="closeLogin">&times;</span>
+
+            <h2>Login</h2>
+
+            <form id="loginForm">
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+
+                    Login
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= SIGNUP MODAL ================= -->
+
+    <div
+        class="modal"
+        id="signupModal"
+    >
+
+        <div class="modal-content">
+
+            <span class="close" id="closeSignup">&times;</span>
+
+            <h2>Create Account</h2>
+
+            <form id="signupForm">
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Full Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Email"
+                    required
+                >
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Password"
+                    required
+                >
+
+                <select
+                    id="signupRole"
+                >
+
+                    <option value="USER">
+
+                        User
+
+                    </option>
+
+                    <option value="MANAGER">
+
+                        Manager
+
+                    </option>
+
+                </select>
+
+                <input
+                    type="text"
+                    id="managerCode"
+                    placeholder="Manager Code"
+                    style="display:none;"
+                >
+
+                <button
+                    type="submit"
+                    class="btn-primary"
+                >
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+        <!-- ================= THEATRE DETAILS MODAL ================= -->
+
+    <div
+        class="modal"
+        id="theatreModal"
+    >
+
+        <div class="modal-content large">
+
+            <span
+                class="close"
+                id="closeTheatreModal"
+            >&times;</span>
+
+            <div id="theatreDetails">
+
+                <!-- Theatre details loaded here -->
+
+            </div>
+
+            <hr>
+
+            <h3>Running Movies</h3>
+
+            <div
+                id="theatreMovies"
+                class="card-container"
+            >
+
+                <!-- JS -->
+
+            </div>
+
+            <hr>
+
+            <div class="review-header">
+
+                <h3>Reviews</h3>
+
+                <button
+                    id="writeReviewBtn"
+                    class="btn-primary"
+                    style="display:none;"
+                >
+
+                    Write Review
+
+                </button>
+
+            </div>
+
+            <div id="reviewContainer">
+
+                <!-- Reviews -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= REVIEW MODAL ================= -->
+
+    <div
+        class="modal"
+        id="reviewModal"
+    >
+
+        <div class="modal-content">
+
+            <span
+                class="close"
+                id="closeReviewModal"
+            >&times;</span>
+
+            <h2>Write Review</h2>
+
+            <form id="reviewForm">
+
+                <label>
+
+                    Rating
+
+                </label>
+
+                <select
+                    id="reviewRating"
+                    required
+                >
+
+                    <option value="5">5 ⭐</option>
+                    <option value="4">4 ⭐</option>
+                    <option value="3">3 ⭐</option>
+                    <option value="2">2 ⭐</option>
+                    <option value="1">1 ⭐</option>
+
+                </select>
+
+                <textarea
+                    id="reviewText"
+                    rows="5"
+                    placeholder="Share your experience..."
+                    required
+                ></textarea>
+
+                <button
+                    class="btn-primary"
+                    type="submit"
+                >
+
+                    Submit Review
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= MANAGER DASHBOARD ================= -->
+
+    <div
+        class="modal"
+        id="managerModal"
+    >
+
+        <div class="modal-content large">
+
+            <span
+                class="close"
+                id="closeManagerModal"
+            >&times;</span>
+
+            <h2>Manager Dashboard</h2>
+
+            <div class="dashboard-grid">
+
+    <div class="dashboard-card" id="showAddTheatre">
+        <i class="fa-solid fa-building-circle-plus"></i>
+        <h3>Add Theatre</h3>
+    </div>
+
+    <div class="dashboard-card" id="showManageTheatres">
+        <i class="fa-solid fa-building"></i>
+        <h3>Manage Theatres</h3>
+    </div>
+
+    <div class="dashboard-card" id="showManageMovies">
+        <i class="fa-solid fa-film"></i>
+        <h3>Manage Movies</h3>
+    </div>
+
+    <div class="dashboard-card" id="showAssignMovie">
+        <i class="fa-solid fa-link"></i>
+        <h3>Assign Movie</h3>
+    </div>
+
+</div>
+
+<hr>
+
+<!-- ================= MANAGER FORMS ================= -->
+
+<div id="managerForms">
+
+    <!-- Add Theatre -->
+
+    <div class="manager-section" id="addTheatreSection" style="display:none;">
+
+        <h3>Add Theatre</h3>
+
+        <form id="addTheatreForm">
+
+            <input
+                type="text"
+                id="theatreName"
+                placeholder="Theatre Name"
+                required
+            >
+
+            <input
+                type="text"
+                id="theatreCity"
+                placeholder="City"
+                required
+            >
+
+            <input
+                type="number"
+                id="theatreScreens"
+                placeholder="Screens"
+                required
+            >
+
+            <button
+                class="btn-primary"
+                type="submit"
+            >
+                Save Theatre
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- Add Movie -->
+
+    <div class="manager-section" id="addMovieSection" style="display:none;">
+
+        <h3>Add Movie</h3>
+
+        <form id="addMovieForm">
+
+            <input
+                type="text"
+                id="movieTitle"
+                placeholder="Movie Title"
+                required
+            >
+
+            <input
+                type="text"
+                id="movieGenre"
+                placeholder="Genre"
+                required
+            >
+
+            <button
+                class="btn-primary"
+                type="submit"
+            >
+                Save Movie
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- Assign Movie -->
+
+    <div class="manager-section" id="assignMovieSection" style="display:none;">
+
+        <h3>Assign Movie To Theatre</h3>
+
+        <form id="assignMovieForm">
+
+            <select id="assignTheatre" required>
+
+            </select>
+
+            <select id="assignMovie" required>
+
+            </select>
+
+            <button
+                class="btn-primary"
+                type="submit"
+            >
+                Assign Movie
+            </button>
+
+        </form>
+
+    </div>
+
+
+
+    <!-- Dynamic Lists -->
+
+    <div
+        id="managerContent"
+        style="display:none;"
+    >
+
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= LOADING ================= -->
+
+    <div
+        id="loader"
+        class="loader"
+        style="display:none;"
+    >
+
+        <div class="spinner"></div>
+
+    </div>
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+
+        Message
+
+    </div>
+
+
+
+    <!-- ================= SCRIPT ================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
